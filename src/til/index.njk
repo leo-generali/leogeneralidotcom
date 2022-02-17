@@ -1,0 +1,9 @@
+---
+layout: base
+---
+<h1>all the tils</h1>
+{% for til in notion.tils %}
+    <li>
+        <a href="/til/{{ til.slug }}">{{ til.title }}</a>
+    </li>
+{% endfor %}

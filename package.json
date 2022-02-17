@@ -1,0 +1,23 @@
+{
+  "name": "eleventy-notion-cms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Leo Generali <leo.generali@vimeo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@notionhq/client": "^0.4.13",
+    "autoprefixer": "^10.4.2",
+    "cssnano": "^5.0.17",
+    "dotenv": "^16.0.0",
+    "notion-to-md": "^2.3.1",
+    "postcss": "^8.4.6",
+    "postcss-import": "^14.0.2",
+    "slugify": "^1.6.5"
+  },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  }
+}

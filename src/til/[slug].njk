@@ -1,0 +1,10 @@
+---
+layout: base
+pagination:
+  data: notion.tils
+  size: 1
+  alias: til
+permalink: "/til/{{ til.slug }}/index.html"
+templateEngineOverride: njk,md
+---
+{{ til.markdown | safe }}
