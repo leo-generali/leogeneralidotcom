@@ -6,18 +6,27 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
     "@notionhq/client": "^0.4.13",
     "autoprefixer": "^10.4.2",
+    "concurrently": "^7.0.0",
     "cssnano": "^5.0.17",
     "dotenv": "^16.0.0",
     "notion-to-md": "^2.3.1",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
-    "slugify": "^1.6.5"
+    "rimraf": "^3.0.2",
+    "slugify": "^1.6.5",
+    "tailwindcss": "^3.0.23"
   },
   "scripts": {
-    "dev": "eleventy --serve",
-    "build": "eleventy"
+    "dev:css": "tailwindcss -i ./src/_assets/styles.css -o ./_site/styles.css --watch",
+    "dev:site": "eleventy --serve",
+    "dev": "concurrently \"yarn dev:css\" \"yarn dev:site\"",
+    "clean": "rimraf _site",
+    "build:site": "eleventy",
+    "build:css": "tailwindcss -i ./src/_assets/styles.css -o ./_site/styles.css --minify",
+    "build": "yarn clean && yarn build:site && yarn build:css"
   }
 }
