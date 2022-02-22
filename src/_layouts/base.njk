@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ site.language }}">
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link href="/styles.css" rel="stylesheet">
   <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
 </head>
-<body>
-  {{ content | safe }}
+<body class="flex flex-col h-screen max-w-[75ch] w-full mx-auto px-4 text-slate-700">
+  <nav class="flex col-start-2 mt-16 mb-20">
+    <a href="/">Home</a>
+    <ul class="flex ml-auto space-x-4">
+      <li>
+        <a class="font-bold hover:text-indigo-400" href="/til">TIL</a>
+      </li>
+      <li>
+        <a class="font-bold hover:text-indigo-400" href="/writing">Writing</a>
+      </li>
+    </ul>
+  </nav>
+  <main class="grow {{ mainClass }}">{{ content | safe }}</main>
+  <footer class="py-8 mt-20 text-xs {{ tailwind.prose }}">
+    <p>Powered by <a href="https://www.11ty.dev/">Eleventy</a>, <a href="https://tailwindcss.com/">TailwindCSS</a>, and <a href="https://notion.so">Notion</a></p>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,37 @@
+---
+layout: base
+mainClass: space-y-8
+---
+
+<section class="space-y-2">
+    <h1 class="text-5xl font-bold tracking-tight">
+        {{ til.title }}
+    </h1>
+    <p class="text-sm">
+        <span class="font-bold">First published:</span>
+        <time>{{ til.date.long }}</time>
+    </p>
+</section>
+
+<details class="p-2 rounded bg-slate-100 text-slate-500">
+    <summary class="text-sm font-semibold cursor-pointer">
+        Changelog
+    </summary>
+    <ol class="space-y-1">
+        {% for changelogItem in til.changelog %}
+            <li class="text-sm grid grid-cols-[110px,1fr] gap-1">
+                <p class="flex justify-between">
+                    <span class="inline-block font-semibold tabular-nums">#{{ loop.index }}</span>:
+                    <span class="tabular-nums">{{ changelogItem.date }}</span> -
+                </p>
+                <span>{{ changelogItem.text }}</span>
+            </li>
+        {% endfor %}
+    </ol>
+</details>
+
+<hr>
+
+<article class="{{ tailwind.prose }}">
+    {{ content | safe }}
+</article>

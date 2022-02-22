@@ -2,5 +2,12 @@
 layout: base
 templateEngineOverride: njk,md
 ---
-
-{{ notion.home | safe }}
+<section>
+    <h1 class="space-y-16 font-sans text-4xl font-bold tracking-tight lg:text-5xl">
+        <p class="animate-fade-in-from-top" style="--delay: 100ms">Hey there! <span class="mr-1" role="img" aria-label="Wave emoji">👋</span></p>
+        <p class="animate-fade-in-from-top" style="--delay: 350ms">I'm Leo. A software engineer living and working in New York City.</p>
+    </h1>
+</section>
+<section class="mt-16 animate-fade-in-from-bottom {{ tailwind.prose }}" style="--delay: 550ms">
+    {{ notion.home | safe }}
+</section>

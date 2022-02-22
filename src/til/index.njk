@@ -1,9 +1,41 @@
 ---
 layout: base
 ---
-<h1>all the tils</h1>
-{% for til in notion.tils %}
-    <li>
-        <a href="/til/{{ til.slug }}">{{ til.title }}</a>
-    </li>
-{% endfor %}
+<section class="mb-12">
+    An ever growing collection of interesting things I learn throughout the
+    day.
+</section>
+
+<section class="grid gap-8 mb-8 md:grid-cols-2">
+    <p class="text-xl font-bold col-span-full">Recent TILs</p>
+    {% set length = 4 if notion.tils | length > 4 else notion.tils | length %}
+    {% for index in range(0, length) %}
+        {% set til = notion.tils[index] %}
+        <a href="/til/{{ til.slug }}" class="block p-3 -m-2 bg-dotted-indigo-200 hover:bg-dotted-indigo-400 group rounded-xl">
+            <div class="p-4 bg-white border-2 border-indigo-200 rounded-lg group-hover:border-indigo-400">
+                <span class="font-bold">{{ til.tag }}:</span>
+                <span class="text-indigo-400 group-hover:text-indigo-600">{{ til.title }}</span>
+            </div>
+        </a>
+    {% endfor %}
+</section>
+
+<section>
+    {% for tag, tils in  notion.tils | groupby("tag") %}
+        <div class="mb-4">
+            <p class="text-xl font-bold">{{ tag }}</p>
+            <ol>
+                {% for til in tils %}
+                    <li>
+                        <a class="block w-full p-3 -mx-3 transition duration-75 rounded-md group hover:bg-indigo-50" href="/til/{{ til.slug }}">
+                            <div class="flex justify-between align-center">
+                                <span class="text-indigo-400 underline transition duration-75 underline-offset-2 decoration-2 group-hover:text-indigo-600 ">{{ til.title }}</span>
+                                <time>{{ til.date.short }}</time>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endfor %}
+</section>
