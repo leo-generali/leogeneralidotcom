@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["IBM Plex Serif", ...theme.fontFamily.serif],
+        mono: ["Consolas", ...theme.fontFamily.mono],
       },
       keyframes: {
         "fade-in-from-bottom": {

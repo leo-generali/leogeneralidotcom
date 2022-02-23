@@ -1,0 +1,20 @@
+---
+layout: base
+---
+
+<nav class="max-w-[75ch] mx-auto mt-20">
+    {% set link = "/" %}
+    <a href="{{ link }}" class="{{ tailwind.link }}">Home</a>
+    {% for crumb in breadcrumb %}
+        <span>/</span>
+        {% if crumb.link %}
+            <a href="/{{ crumb.link }}" class="{{ tailwind.link }}">{{ crumb.text }}</a>
+        {% else %}
+            <span>{{ crumb.text }}</span>
+        {% endif %}
+    {% endfor %}
+</nav>
+
+<main class="max-w-[75ch] mx-auto mt-12">
+    {{ content | safe }}
+</main>

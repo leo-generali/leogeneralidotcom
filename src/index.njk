@@ -1,13 +1,34 @@
 ---
 layout: base
-templateEngineOverride: njk,md
+class: max-w-[70ch] space-y-4
 ---
-<section>
-    <h1 class="space-y-16 font-sans text-4xl font-bold tracking-tight lg:text-5xl">
-        <p class="animate-fade-in-from-top" style="--delay: 100ms">Hey there! <span class="mr-1" role="img" aria-label="Wave emoji">👋</span></p>
-        <p class="animate-fade-in-from-top" style="--delay: 350ms">I'm Leo. A software engineer living and working in New York City.</p>
-    </h1>
-</section>
-<section class="mt-16 animate-fade-in-from-bottom {{ tailwind.prose }}" style="--delay: 550ms">
-    {{ notion.home | safe }}
-</section>
+
+<main class="mt-20 ml-12 mr-12 {{ class }}">
+    <section>
+        <p>Leo Generali</p>
+        <p>Software Engineer @ <a class="{{ tailwind.link }}" href="https://vimeo.com/">Vimeo</a></p>
+    </section>
+    <section>
+        <p>Recent Writing</p>
+        <ul class="ml-4 list-disc list-inside">
+            {% set length = 4 if notion.tils | length > 4 else notion.tils | length %}
+            {% for index in range(0, length) %}
+                {% set til = notion.tils[index] %}
+                <li>
+                    <a href="/til/{{ til.slug }}" class="{{ tailwind.link }}">{{ til.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <p>Navigation</p>
+        <ul class="ml-4 list-disc list-inside">
+            <li>
+                <a href="/about" class="{{ tailwind.link }}" href="">About</a>
+            </li>
+            <li>
+                <a href="/til" class="{{ tailwind.link }}" href="">Today I Learned</a>
+            </li>
+        </ul>
+    </section>
+</main>

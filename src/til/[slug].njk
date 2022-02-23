@@ -6,6 +6,13 @@ pagination:
     alias: til
 permalink: "/til/{{ til.slug }}/index.html"
 templateEngineOverride: njk,md
+eleventyComputed:
+    breadcrumb:
+        -
+            link: til
+            text: Today I Learned
+        -
+            text: "{{ til.title }}"
 ---
 
 {{ til.markdown | safe }}

@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'IBM Plex Serif';
-    src: url('/public/fonts/IBMPlexSerif-Bold.woff2') format('woff2');
+    font-family: 'Consolas';
+    src: url('/public/fonts/Consolas.woff2') format('woff2');
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-display: swap;
 }
 
