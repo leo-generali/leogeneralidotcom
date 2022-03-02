@@ -7,6 +7,7 @@ pagination:
 permalink: "/til/{{ til.slug }}/index.html"
 templateEngineOverride: njk,md
 eleventyComputed:
+    title: "{{ til.title }}"
     breadcrumb:
         -
             link: til
