@@ -2,19 +2,32 @@
 layout: base
 ---
 
-<nav class="max-w-[75ch] mx-auto mt-20">
-    {% set link = "/" %}
-    <a href="{{ link }}" class="{{ tailwind.link }}">Home</a>
-    {% for crumb in breadcrumb %}
-        <span>/</span>
-        {% if crumb.link %}
-            <a href="/{{ crumb.link }}" class="{{ tailwind.link }}">{{ crumb.text }}</a>
+{% macro breadcumb(params) %}
+    <li itemprop="item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        {% if params.link or params.link === "" %}
+            <a class="after:content-['/'] after:mr-2" href="/{{ params.link }}" class="{{ tailwind.link }}">
+                <span class="{{ tailwind.link }}" itemprop="name">{{ params.text }}</span>
+            </a>
         {% else %}
-            <span>{{ crumb.text }}</span>
+            <span itemprop="name">{{ params.text }}</span>
         {% endif %}
-    {% endfor %}
+        <meta itemprop="position" content="{{ params.position }}"></meta>
+    </li>
+{% endmacro %}
+
+<nav class="max-w-[75ch] mx-auto mt-20 px-4">
+    <ol class="flex" itemscope itemtype="http://schema.org/BreadcrumbList">
+        {{ breadcumb({ link: "", position: 1, text: "Home" }) }}
+        {% for crumb in breadcrumb %}
+            {% if crumb.link %}
+                {{ breadcumb({ link: crumb.link, position: loop.index + 1, text: crumb.text }) }}
+            {% else %}
+                {{ breadcumb({ position: loop.index + 1, text: crumb.text }) }}
+            {% endif %}
+        {% endfor %}
+    </ol>
 </nav>
 
-<main class="max-w-[75ch] mx-auto mt-12">
+<main class="max-w-[75ch] mx-auto mt-12 px-4">
     {{ content | safe }}
 </main>
