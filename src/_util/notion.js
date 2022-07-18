@@ -75,6 +75,9 @@ async function getTILs() {
   console.timeEnd("Time to get TIL Data");
 
   for (const rawTIL of rawTILs.results) {
+    if (!rawTIL.properties.published.checkbox) {
+      continue;
+    }
     console.time(
       `Time to get "${rawTIL.properties.title.title[0].plain_text}"`
     );

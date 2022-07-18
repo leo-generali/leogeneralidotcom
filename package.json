@@ -1,8 +1,8 @@
 {
-  "name": "eleventy-notion-cms",
+  "name": "leogeneralidotcom",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Leo Generali <leo.generali@vimeo.com>",
+  "author": "Leo Generali <leo.d.generali@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "^1.0.0",
@@ -26,10 +26,10 @@
   "scripts": {
     "dev:css": "tailwindcss -i ./src/_assets/styles.css -o ./_site/styles.css --watch",
     "dev:site": "eleventy --serve",
-    "dev": "concurrently \"yarn dev:css\" \"yarn dev:site\"",
+    "dev": "concurrently \"npm run dev:css\" \"npm run dev:site\"",
     "clean": "rimraf _site && rimraf .cache",
     "build:site": "eleventy",
     "build:css": "tailwindcss -i ./src/_assets/styles.css -o ./_site/styles.css --minify",
-    "build": "yarn clean && yarn build:site && yarn build:css"
+    "build": "npm run clean && npm run build:site && npm run build:css"
   }
 }
