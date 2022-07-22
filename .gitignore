@@ -131,3 +131,4 @@ dist
 _site
 _cache
 notes.md
+.DS_Store
