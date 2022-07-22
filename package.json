@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Leo Generali <leo.d.generali@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "16.13.1"
+  },
   "dependencies": {
     "@11ty/eleventy": "^1.0.0",
     "@11ty/eleventy-cache-assets": "^2.3.0",
@@ -31,5 +34,8 @@
     "build:site": "eleventy",
     "build:css": "tailwindcss -i ./src/_assets/styles.css -o ./_site/styles.css --minify",
     "build": "npm run clean && npm run build:site && npm run build:css"
+  },
+  "volta": {
+    "node": "16.16.0"
   }
 }

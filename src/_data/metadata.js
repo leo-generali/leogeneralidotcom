@@ -7,6 +7,7 @@ module.exports = {
   author: {
     name: "Leo Generali",
   },
-  twitter_handle: "itsleeohgee",
+  twitter_handle: "itsLeeOhGee",
   og_locale: "en_US",
+  email: "leo.d.generali@gmail.com",
 };

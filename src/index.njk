@@ -1,6 +1,38 @@
----
-layout: base
-class: max-w-[70ch] space-y-4
+---js
+{
+    layout: "base",
+    class: "max-w-[70ch] space-y-4",
+    links: [
+    ],
+    eleventyComputed: {
+        links: (data) => [
+            {
+                type: "Twitter",
+                emoji: "🐦",
+                text: `@${data.metadata.twitter_handle}`,
+                href: `https://twitter.com/${data.metadata.twitter_handle}`,
+            },
+            {
+                type: "Email",
+                emoji: "📫",
+                text: data.metadata.email,
+                href: `mailto:${data.metadata.email}?Subject=Hello!`,
+            },
+            {
+                type: "LinkedIn",
+                emoji: "💻",
+                text: "leogenerali",
+                href: "https://www.linkedin.com/in/leogenerali/",
+            },
+            {
+                type: "Strava",
+                emoji: "👟",
+                text: "Profile",
+                href: "https://www.strava.com/athletes/11876587",
+            }
+        ]
+    }
+}
 ---
 
 <main class="mt-20 ml-12 mr-12 {{ class }}">
@@ -9,10 +41,21 @@ class: max-w-[70ch] space-y-4
         <p>Software Engineer @ <a class="{{ tailwind.link }}" href="https://vimeo.com/">Vimeo</a></p>
     </section>
     <section>
+        <p>Links</p>
+        <ul class="ml-4 list-none">
+            {{ handle }}
+            {% for link in links %}
+                <li>
+                    <span>
+                         <span role="presentation" class="relative select-none right-2">{{ link.emoji }}</span>{{ link.type }}: <a href="{{ link.href }}" class="{{ tailwind.link }}">{{ link.text }}</a>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
         <p>Navigation</p>
         <ul class="ml-4 list-disc list-inside">
-            {# TODO: Add About Section #}
-            {# <li><a href="/about" class="{{ tailwind.link }}" href="">About</a></li> #}
             <li>
                 <a href="/til" class="{{ tailwind.link }}" href="">Today I Learned</a>
             </li>
