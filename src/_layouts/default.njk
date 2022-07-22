@@ -3,7 +3,7 @@ layout: base
 ---
 
 {% macro breadcumb(params) %}
-    <li itemprop="item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <li class="inline" itemprop="item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         {% if params.link or params.link === "" %}
             <a class="after:content-['/'] after:mx-2" href="/{{ params.link }}" class="{{ tailwind.link }}">
                 <span class="{{ tailwind.link }}" itemprop="name">{{ params.text }}</span>
@@ -16,7 +16,7 @@ layout: base
 {% endmacro %}
 
 <nav class="max-w-[75ch] mx-auto mt-20 px-4">
-    <ol class="flex" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <ol class="" itemscope itemtype="http://schema.org/BreadcrumbList">
         {{ breadcumb({ link: "", position: 1, text: "Home" }) }}
         {% for crumb in breadcrumb %}
             {% if crumb.link %}
