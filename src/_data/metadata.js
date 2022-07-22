@@ -1,3 +1,5 @@
+const { version } = require("@11ty/eleventy/package.json");
+
 module.exports = {
   title: "Leo Generali",
   url: "https://www.leogenerali.com",
@@ -10,4 +12,5 @@ module.exports = {
   twitter_handle: "itsLeeOhGee",
   og_locale: "en_US",
   email: "leo.d.generali@gmail.com",
+  eleventyVersion: version,
 };
