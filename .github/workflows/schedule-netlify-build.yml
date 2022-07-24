@@ -4,7 +4,7 @@ on:
     - cron: "0 4 * * *"
 jobs:
   build:
-    name: Call Netlify build hook
+    name: Call the Netlify Build Hook
     runs-on: ubuntu-latest
     steps:
       - name: Curl request
