@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Consolas", ...theme.fontFamily.mono],
+        loaded: ["Consolas", ...theme.fontFamily.mono],
       },
       keyframes: {
         "fade-in-from-bottom": {
